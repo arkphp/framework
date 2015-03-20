@@ -34,6 +34,8 @@ abstract class App
         if ($configs['debug']) {
             ini_set('display_errors', true);
             error_reporting(E_ALL^E_NOTICE);
+        } else {
+            ini_set('display_errors', false);
         }
         
         $this->event = new EventEmitter();
@@ -67,23 +69,9 @@ abstract class App
 
     public function handleException($exception)
     {
-        $this->dispatchResponseEvent('app.exception', $this, array(
-            'exception' => $exception
-        ));
+        $this->event->emit('app.exception', [$exception]);
     }
-
-    public function dispatchResponseEvent($event, $source = null, $data = array())
-    {
-        if (is_string($event)) {
-            $event = new ArkEvent($event, $source, $data);
-        }
-        $this->event->dispatch($event, $source, $data);
-
-        if ($event->result !== null) {
-            $this->respond($event->result);
-        }
-    }
-
+    
     public function handleExceptionDefault($exception)
     {
         if ($this->configs['debug']) {
