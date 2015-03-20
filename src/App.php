@@ -1,20 +1,23 @@
 <?php
 /**
- * Tinyark Framework
+ * Ark Framework
  *
- * @link http://github.com/ddliu/tinyark
+ * @link http://github.com/ark/framework
  * @copyright  Liu Dong (http://codecent.com)
  * @license MIT
  */
 
-namespace ddliu\tinyark;
+namespace Ark\Framework;
+
+use Pimple\Container;
+use Ark\Event\EventEmitter;
 
 /**
  * Ark app
  */
 abstract class App
 {
-    protected $container;
+    public $container;
 
     public $configs;
 
@@ -24,6 +27,8 @@ abstract class App
 
     public function __construct(array $configs)
     {
+        self::$instance = $this;
+
         $this->configs = $configs;
 
         if ($configs['debug']) {
@@ -31,22 +36,19 @@ abstract class App
             error_reporting(E_ALL^E_NOTICE);
         }
         
-        $this->event = new ArkEventManager();
+        $this->event = new EventEmitter();
+        $this->container = new Container();
 
-        $this->event->dispatch('app.before', $this);
-
-        self::$instance = $this;
-        
-        //Service container
-        $this->container = new ArkContainer($this->config->get('service', array()));
+        $this->event->emit('app.before', [$this]);
         
         // exception handler
         set_exception_handler(array($this, 'handleException'));
-        $this->event->attach('app.exception', array($this, 'handleExceptionDefault'), true, ArkEventManager::PRIORITY_LOWEST);
+        $this->event->on('app.exception', array($this, 'handleExceptionDefault'), 10000);
 
         $this->init();
-        //app is ready
-        $this->event->dispatch('app.ready', $this);
+
+        //app is ready to run
+        $this->event->emit('app.ready', [$this]);
     }
     
     /**
@@ -54,12 +56,7 @@ abstract class App
      */
     abstract protected function init();
 
-    public function getContainer()
-    {
-        return $this->container;
-    }
-
-    public function isCli(){
+    protected function isCli(){
         return PHP_SAPI === 'cli';
     }
 
@@ -89,29 +86,10 @@ abstract class App
 
     public function handleExceptionDefault($exception)
     {
-        if (ARK_APP_DEBUG) {
+        if ($this->configs['debug']) {
             throw $exception;
         } else {
             echo 'Error occurred';
         }
-
-        $this->respond($resonse);
-    }
-
-    /**
-     * Respond and exit
-     * @param  mixed $response
-     */
-    public function respond($response, $exit = true)
-    {
-        // response
-        $event = new ArkEvent('app.response', $this, $response);
-        $this->event->dispatch($event);
-
-        echo $response;
-
-        $this->event->dispatch('app.shutdown', $this);
-
-        $exit && exit();
     }
 }
