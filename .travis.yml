@@ -1,8 +1,0 @@
-language: php
-php: 
- - 5.3
-services:
- - memcached
-before_script: 
- - sudo apt-get install memcached
- - echo -e 'extension = "apc.so" \n apc.enable_cli = 1 \n extension = "memcache.so" \n extension = "memcached.so"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
