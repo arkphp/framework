@@ -1,36 +1,16 @@
-# TinyArk
+# Ark Framework
 
-[![Build Status](https://travis-ci.org/ddliu/tinyark.png)](https://travis-ci.org/ddliu/tinyark)
+Lightweight PHP framework.
 
-Tiny PHP framework for open platforms.
+## Features
 
-[Document](http://codecent.com/tinyark/index.html)
+- Event driven
+- Small
 
-## Changelog
+## Requirements
 
-### v0.1.3(2014-01-18)
+- PHP 5.4
 
-- Add `assignGlobal` in view and controller
-- Add `isAjax` in `ArkController`
-- Fix validator
+## Usage
 
-### v0.1.2(2014-01-16)
-
-- Add validator and some tests
-
-### v0.1.1(2013-12-18)
-
-- Rewrite logger
-- Code cleanup
-
-### v0.1.0(2013-11-28) 
-
-- Fix testing
-
-### 2012-2013
-
-Under development
-
-## License
-
-Licensed under the MIT license
+See `index.php`

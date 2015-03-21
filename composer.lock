@@ -4,15 +4,15 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c6d33e5dc0190170ee2717525fce1367",
+    "hash": "6d323b4a9b3aab87a90d7138bc961b95",
     "packages": [
         {
             "name": "ark/event",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/arkphp/event.git",
-                "reference": "5d1a08fef56ddf6d4d4ac35e3c901c6bac7f367b",
+                "reference": "e6250068e9d64e0afe48bb1c58b5572cc53eeace",
                 "mirrors": [
                     {
                         "url": "/%package%/%normalizedUrl%.%type%",
@@ -22,8 +22,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arkphp/event/zipball/5d1a08fef56ddf6d4d4ac35e3c901c6bac7f367b",
-                "reference": "5d1a08fef56ddf6d4d4ac35e3c901c6bac7f367b",
+                "url": "https://api.github.com/repos/arkphp/event/zipball/e6250068e9d64e0afe48bb1c58b5572cc53eeace",
+                "reference": "e6250068e9d64e0afe48bb1c58b5572cc53eeace",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -60,7 +60,62 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2015-03-20 10:45:30"
+            "time": "2015-03-21 18:00:39"
+        },
+        {
+            "name": "nikic/fast-route",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/FastRoute.git",
+                "reference": "f26a8f7788f25c0e3e9b1579d38d7ccab2755320",
+                "mirrors": [
+                    {
+                        "url": "/%package%/%normalizedUrl%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/f26a8f7788f25c0e3e9b1579d38d7ccab2755320",
+                "reference": "f26a8f7788f25c0e3e9b1579d38d7ccab2755320",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "http://pkg.phpcomposer.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FastRoute\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov",
+                    "email": "nikic@php.net"
+                }
+            ],
+            "description": "Fast request router for PHP",
+            "keywords": [
+                "router",
+                "routing"
+            ],
+            "time": "2015-02-26 15:33:07"
         },
         {
             "name": "pimple/pimple",
