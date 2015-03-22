@@ -1,0 +1,28 @@
+{
+    "alias": "ark.framework.phar",
+    "chmod": "0755",
+    "compactors": [
+        "Herrera\\Box\\Compactor\\Json",
+        "Herrera\\Box\\Compactor\\Php"
+    ],
+    "finder": [
+        {
+            "name": [
+                "LICENSE*",
+                "License*",
+                "*.php"
+            ],
+            "exclude": [
+                "phpunit",
+                "Tests",
+                "tests"
+            ],
+            "in": ["src", "vendor"]
+        }
+    ],
+    "output": "tmp/ark.framework.phar",
+    "git-version": "git_version",
+    "main": "bootstrap.php",
+    "output": "tmp/ark.framework.phar",
+    "stub": true
+}
