@@ -12,6 +12,6 @@ function service($name) {
     return app()[$name];
 }
 
-public function config($key) {
+function config($key) {
     return app()->configs[$key];
 }
