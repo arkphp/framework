@@ -93,4 +93,10 @@ abstract class BaseApp implements \ArrayAccess
     public function offsetUnset($offset) {
         unset($this->container[$offset]);
     }
+
+    public function loadShortcut() {
+        require_once(__DIR__.'/shortcut.php');
+
+        return $this;
+    }
 }
