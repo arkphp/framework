@@ -39,8 +39,8 @@ abstract class BaseApp implements \ArrayAccess
         $this->container = new Container();
         
         // exception handler
-        set_exception_handler(function() use ($event) {
-            $event->emit('exception');
+        set_exception_handler(function($e) use ($event) {
+            $event->emit('exception', [$e]);
         });
 
         // Set default handlers

@@ -35,7 +35,7 @@ class WebApp extends BaseApp
         header('HTTP/1.1 500 Internal Server Error');
 
         if ($this->configs['debug']) {
-            echo $exception;
+            throw $exception;
         } else {
             echo 'Internal Server Error';
         }
